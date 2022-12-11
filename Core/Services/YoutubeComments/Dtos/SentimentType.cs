@@ -1,4 +1,4 @@
-﻿namespace SentimentWebService.Clients.SentimentPrediction.Dtos;
+﻿namespace Core.Services.YoutubeComments.Dtos;
 
 public enum SentimentType
 {

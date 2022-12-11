@@ -11,24 +11,31 @@ public class CommentRepository : ICommentRepository
         _dbContext = dbContext;
     }
 
-    public int Create(int analisysId, string author, string text, SentimentType sentimentType)
+    public IEnumerable<CommentDto> GetAll(int analysisId)
     {
-        var newComment = new Infrastructure.Models.Comment
-        {
-            AnalysisId = analisysId,
-            Author = author,
-            Text = text,
-            SentimentType = MapSentimentType(sentimentType)
-        };
-        var createdComment = _dbContext.Comments.Add(newComment);
-        var commentId = createdComment.Entity.Id;
-        return commentId;
+        var all = _dbContext.Comments.Where(c => c.AnalysisId == analysisId).Select(c => new CommentDto(c.Id, c.Author, c.Text, MapSentimentType(c.SentimentType))).AsEnumerable();
+        return all;
     }
 
-    public IQueryable<CommentDto> GetAll(int analysisId)
+    public bool CreateRange(int analisysId, IEnumerable<NewCommentDto> comments)
     {
-        var all = _dbContext.Comments.Where(c => c.AnalysisId == analysisId).Select(c => new CommentDto(c.Id, c.Author, c.Text, MapSentimentType(c.SentimentType)));
-        return all;
+        var newComments = comments.Select(c => new Infrastructure.Models.Comment
+        {
+            AnalysisId = analisysId,
+            Author = c.Author,
+            Text = c.Text,
+            SentimentType = MapSentimentType(c.SentimentType)
+        });
+        _dbContext.Comments.AddRange(newComments);
+        try
+        {
+            _dbContext.SaveChanges();
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     private static Infrastructure.Models.SentimentType MapSentimentType(SentimentType sentimentType)

@@ -2,7 +2,9 @@
 
 public interface IAnalysisRepository
 {
-    public IQueryable<AnalysisDto> GetAll();
+    public IEnumerable<AnalysisDto> GetAll();
 
-    public int Create(string videoId);
+    public AnalysisDetailsDto? GetOrDeafault(int id);
+
+    public int? Create(string videoId, int negativeCommentsCount, int neutralCommentsCount, int positiveCommentsCount);
 }

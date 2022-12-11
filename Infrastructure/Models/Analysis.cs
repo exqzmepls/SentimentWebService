@@ -8,5 +8,11 @@ public class Analysis
 
     public string VideoId { get; set; } = null!;
 
+    public int NegativeCommentsCount { get; set; }
+
+    public int NeutralCommentsCount { get; set; }
+
+    public int PositiveCommentsCount { get; set; }
+
     public IEnumerable<Comment> Comments { get; set; } = null!;
 }

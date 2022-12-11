@@ -1,6 +1,6 @@
-﻿using SentimentWebService.Clients.SentimentPrediction.Dtos;
+﻿using Core.Clients.SentimentPrediction.Dtos;
 
-namespace SentimentWebService.Clients.SentimentPrediction;
+namespace Core.Clients.SentimentPrediction;
 
 public interface ISentimentPredictionClient
 {

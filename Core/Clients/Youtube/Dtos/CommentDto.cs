@@ -1,4 +1,4 @@
-﻿namespace SentimentWebService.Clients.Youtube.Dtos;
+﻿namespace Core.Clients.Youtube.Dtos;
 
 public class CommentDto
 {

@@ -1,10 +1,10 @@
-﻿using Google.Apis.Services;
+﻿using Core.Clients.Youtube.Dtos;
+using Google.Apis.Services;
 using Google.Apis.YouTube.v3;
 using Google.Apis.YouTube.v3.Data;
-using SentimentWebService.Clients.Youtube.Dtos;
 using static Google.Apis.YouTube.v3.CommentThreadsResource.ListRequest;
 
-namespace SentimentWebService.Clients.Youtube;
+namespace Core.Clients.Youtube;
 
 public class YoutubeClient : IYoutubeClient
 {

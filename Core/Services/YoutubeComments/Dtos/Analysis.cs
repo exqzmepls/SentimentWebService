@@ -1,4 +1,4 @@
-﻿namespace SentimentWebService.Services.YoutubeComments.Dtos;
+﻿namespace Core.Services.YoutubeComments.Dtos;
 
 public class Analysis
 {

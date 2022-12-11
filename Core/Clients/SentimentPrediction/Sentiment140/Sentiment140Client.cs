@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
-using SentimentWebService.Clients.SentimentPrediction.Dtos;
-using SentimentWebService.Clients.SentimentPrediction.Sentiment140.Dtos;
+﻿using System.Net.Http;
+using Core.Clients.SentimentPrediction.Dtos;
+using Core.Clients.SentimentPrediction.Sentiment140.Dtos;
+using Newtonsoft.Json;
 
-namespace SentimentWebService.Clients.SentimentPrediction.Sentiment140;
+namespace Core.Clients.SentimentPrediction.Sentiment140;
 
 public class Sentiment140Client : ISentimentPredictionClient
 {

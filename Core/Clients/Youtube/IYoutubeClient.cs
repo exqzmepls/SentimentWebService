@@ -1,6 +1,6 @@
-﻿using SentimentWebService.Clients.Youtube.Dtos;
+﻿using Core.Clients.Youtube.Dtos;
 
-namespace SentimentWebService.Clients.Youtube;
+namespace Core.Clients.Youtube;
 
 public interface IYoutubeClient
 {

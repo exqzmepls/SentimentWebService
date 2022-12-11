@@ -2,7 +2,7 @@
 
 public interface ICommentRepository
 {
-    public IQueryable<CommentDto> GetAll(int analysisId);
+    public IEnumerable<CommentDto> GetAll(int analysisId);
 
-    public int Create(int analisysId, string author, string text, SentimentType sentimentType);
+    public bool CreateRange(int analisysId, IEnumerable<NewCommentDto> comments);
 }
