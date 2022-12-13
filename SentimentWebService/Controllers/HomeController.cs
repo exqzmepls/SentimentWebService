@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SentimentWebService.Models;
-using SentimentWebService.Services.YoutubeComments;
 using System.Diagnostics;
 
 namespace SentimentWebService.Controllers;
@@ -16,7 +15,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        return RedirectToAction("Index", "Analysis");
     }
 
     public IActionResult Privacy()

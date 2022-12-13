@@ -1,0 +1,24 @@
+﻿@model SentimentWebService.Models.CommentsViewModel
+
+@(Html
+    .Grid(Model.Comments)
+    .Build(columns =>
+    {
+        columns.Add(model => model.Author).Titled("Author");
+        columns.Add(model => model.Text).Titled("Text").RenderedAs(model => $"<p>{model.Text}</p>").Encoded(false);
+        columns.Add(model => model.Sentiment).Titled("Sentiment");
+    })
+    .UsingUrl(Url.Action("Comments", "Analysis", new { id = Model.AnalysisId })!)
+    .Using(GridFilterMode.Row)
+    .Empty("No data found")
+    .Filterable()
+    .Sortable()
+    .Pageable(pager =>
+    {
+        pager.PageSizes = new Dictionary<int, string> { { 0, "All" }, { 5, "5" }, { 10, "10" }, { 25, "25" }, { 50, "50" }, { 100, "100" } };
+        pager.ShowPageSizes = true;
+        pager.PagesToDisplay = 5;
+        pager.CurrentPage = 1;
+        pager.RowsPerPage = 10;
+    })
+)

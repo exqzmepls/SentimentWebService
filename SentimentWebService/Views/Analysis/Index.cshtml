@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SentimentWebService.Models.AnalysisViewModel>
+
+@{
+    ViewData["Title"] = "Analises";
+}
+
+<h1>Analises</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+@(Html
+    .Grid(Model)
+    .Build(columns =>
+    {
+        columns.Add(model => model.Id).Titled("ID");
+        columns.Add(model => model.VideoId).Titled("VideoId");
+        columns.Add(model => model.CreationDateUtc).Titled("Creation Date (UTC)");
+        columns.Add(model => Html.ActionLink("Details", "Details", new { id = model.Id })).Sortable(false).Filterable(false);
+    })
+    .Using(GridFilterMode.Row)
+    .Empty("No data found")
+    .Filterable()
+    .Sortable()
+    .Pageable(pager =>
+    {
+        pager.PageSizes = new Dictionary<int, string> { { 0, "All" }, { 10, "10" }, { 25, "25" } };
+        pager.ShowPageSizes = true;
+        pager.PagesToDisplay = 5;
+        pager.CurrentPage = 1;
+        pager.RowsPerPage = 10;
+    })
+)

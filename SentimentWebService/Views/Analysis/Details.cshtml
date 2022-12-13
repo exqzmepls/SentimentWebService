@@ -1,0 +1,48 @@
+﻿@model SentimentWebService.Models.AnalysisDetailsViewModel
+
+@{
+    ViewData["Title"] = "Analysis Details";
+}
+
+<h2>Analysis Details</h2>
+
+<hr />
+<h2>Video</h2>
+<div class="d-flex justify-content-center">
+    <iframe class="" width="640" height="360" src="//www.youtube.com/embed/@Model.VideoId" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<hr />
+<h2>Summary</h2>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CommentsTotalCount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CommentsTotalCount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NegativeCommentsStat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NegativeCommentsStat.Value)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NeutralCommentsStat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NeutralCommentsStat.Value)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PositiveCommentsStat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PositiveCommentsStat.Value)
+        </dd>
+    </dl>
+</div>
+
+<hr />
+<h2>Comments sentiment</h2>
+@(await Html.PartialAsync("_CommentsGrid", Model.Comments))
