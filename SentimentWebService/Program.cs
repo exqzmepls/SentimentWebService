@@ -15,7 +15,7 @@ var configuration = builder.Configuration;
 builder.Services.AddDbContext<Context>(options =>
 {
     var connectionString = configuration.GetConnectionString("db");
-    options.UseSqlServer(connectionString);
+    options.UseNpgsql(connectionString);
 });
 builder.Services.AddHttpClient("sentiment140", client =>
 {
@@ -39,7 +39,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
